@@ -94,7 +94,7 @@ for a in links:
         name = input("name: ")
         try:
             response = requests.get(href)
-            htmlfile = os.path.join(folder, name + ".html", "w")
+            htmlfile = open(os.path.join(folder, name + ".html"), "w")
             htmlfile.write(response.txt)
             htmlfile.close()
         except:
