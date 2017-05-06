@@ -84,14 +84,20 @@ for a in links:
     href = a.get('href')
     print(href)
 
+    if href[-1] == "/":
+        href = href[0:-1]
+
+    default_name = href.split("/")[-1]
+
     if download_default == "n":
         download = input("download <s/N>: ") or download_default
     else:
         download = input("download <S/n>: ") or download_default
 
     if download == "s":
+        print("default name: ", default_name)
         download_default = "s"
-        name = input("name: ")
+        name = input("name: ") or default_name
         try:
             response = requests.get(href)
             htmlfile = open(os.path.join(folder, name + ".html"), "w")
