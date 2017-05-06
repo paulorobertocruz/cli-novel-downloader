@@ -1,0 +1,33 @@
+{
+    "site":{
+        "wuxiaworld":{
+            "url":"http://www.wuxiaworld.com/",
+            "option":"programatic",
+        },
+
+        "kobatochan":{
+            "url":"http://kobatochan.com",
+            "option":"crowling",
+        }
+    },
+
+    "lgiht-novel":{
+
+        "Martial God Asura":{
+            "title":"Martial God Asura",
+            "index":"mga-index",
+            "nation":"chinese",
+            "site":"wuxiaworld",
+            "last_chapter":999,
+        },
+
+        "Absolute Choice":{
+            "title":"Absolute Choice",
+            "index":"absolute-choice-index",
+            "nation":"chinese",
+            "site":"wuxiaworld",
+            "last_chapter":500,
+        }
+    }
+
+}

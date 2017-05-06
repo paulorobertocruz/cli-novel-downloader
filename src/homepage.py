@@ -3,6 +3,8 @@ import requests
 import sys
 import os
 
+# https://isekailunatic.wordpress.com/tsuki-ga-michibiku-isekai-douchuu/
+
 show_traceback = True
 
 BASE_DIR = os.path.dirname( os.path.realpath(__file__))
@@ -60,8 +62,40 @@ while htmlpage is None:
 
 
 
-div = input("tag:?")
-print("tag:", div)
+tag = input("tag:?")
+print("tag:", tag)
 
+attrib = input("atrribs: attr: value value2 $ attr2: value3 : ")
+attrib = attrib.split("$")
+attr = {}
+for a in attrib:
+    r = a.split(":")
+    attr[r[0]] = r[1]
+
+# {'class': 'entry-content'}
+print(attr)
 domcument = BeautifulSoup(htmlpage.text, "html.parser")
-l = so.find(tag, {'class': 'entry-content'})
+tag_element = domcument.find(tag, attr)
+
+links = tag_element.find_all("a")
+
+download_default = "n"
+for a in links:
+    href = a.get('href')
+    print(href)
+
+    if download_default == "n":
+        download = input("download <s/N>: ") or download_default
+    else:
+        download = input("download <S/n>: ") or download_default
+
+    if download == "s":
+        download_default = "s"
+        name = input("name: ")
+        try:
+            response = requests.get(href)
+            htmlfile = os.path.join(folder, name + ".html", "w")
+            htmlfile.write(response.txt)
+            htmlfile.close()
+        except:
+            print(sys.exc_info())
