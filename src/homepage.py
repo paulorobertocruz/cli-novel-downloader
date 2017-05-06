@@ -14,11 +14,13 @@ while folder is None:
     print("Onde deseja salvar os arquivos")
     folder_name = input("diretorio:")
     folder_name = os.path.join(DOWNLOADS_DIR, folder_name)
-    
+
     if os.path.isdir(folder_name):
-        print("diretorio existe")
-        folder = folder_name
-        print(folder)
+        usar = input("diretorio existe, usar?<s/N>") or "n"
+        usar = usar.lower()
+        if usar == "s":
+            folder = folder_name
+            print(folder)
     else:
         print("diretorio nao existe")
         try:
